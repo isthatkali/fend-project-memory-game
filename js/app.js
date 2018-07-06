@@ -41,13 +41,38 @@ const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', (event) => {
     const clickedCard = event.target;
-    if (clickedCard.classList.contains('card')) {
-        toggleCard(clickedCard);
+    if (clickedCard.classList.contains('card') && openCards.length <2) {
+        flipCard(clickedCard);
+        addCard(clickedCard);
+        if (openCards.length === 2) {
+            checkMatch();
+        }
     }
 });
 
 // Toggle function to reveal card's symbol
-function toggleCard(clickedCard) {
+function flipCard(clickedCard) {
     clickedCard.classList.toggle('open');
     clickedCard.classList.toggle('show');
+}
+
+// Function to add clicked card to list of "open" cards
+let openCards = [];
+
+function addCard (clickedCard) {
+    openCards.push(clickedCard);
+}
+
+// Function to check if opened cards are matching 
+function checkMatch() {
+    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
+        openCards[0].classList.toggle('match');
+        openCards[1].classList.toggle('match');
+    } else {
+        setTimeout (() => { // set timeout so we can see open cards before they flip back
+            flipCard(openCards[0]); // flips cards back
+            flipCard(openCards[1]);
+            openCards = []; // clears open card array
+        }, 2000);
+    }   
 }
