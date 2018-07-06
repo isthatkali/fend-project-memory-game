@@ -2,7 +2,6 @@
  * Create a list that holds all of your cards
  */
 
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -36,3 +35,19 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// Set up event listener for when a card is clicked
+const deck = document.querySelector('.deck');
+
+deck.addEventListener('click', (event) => {
+    const clickedCard = event.target;
+    if (clickedCard.classList.contains('card')) {
+        toggleCard(clickedCard);
+    }
+});
+
+// Toggle function to reveal card's symbol
+function toggleCard(clickedCard) {
+    clickedCard.classList.toggle('open');
+    clickedCard.classList.toggle('show');
+}
