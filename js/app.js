@@ -68,6 +68,7 @@ function checkMatch() {
     if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
         openCards[0].classList.toggle('match');
         openCards[1].classList.toggle('match');
+        openCards = []; // clears open card array
     } else {
         setTimeout (() => { // set timeout so we can see open cards before they flip back
             flipCard(openCards[0]); // flips cards back
