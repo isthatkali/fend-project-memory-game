@@ -1,13 +1,25 @@
 /*
  * Create a list that holds all of your cards
  */
+const deck = document.querySelector('.deck');
 
-/*
+ /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+// Funtion to utilize shuffle function to put shuffled cards in new array
+function shuffleCards () {
+    const unshuffledCards = Array.from(document.querySelectorAll('.deck li')); // List of all cards converted to an array
+    const shuffledCards = shuffle(unshuffledCards); // shuffle cards
+    for (card of shuffledCards) {
+        deck.appendChild(card); // for loop to append newly ordered cards to deck
+    }
+}
+
+shuffleCards();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -24,7 +36,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -37,8 +48,6 @@ function shuffle(array) {
  */
 
 // Set up event listener for when a card is clicked
-const deck = document.querySelector('.deck');
-
 deck.addEventListener('click', (event) => {
     const clickedCard = event.target;
     if (clickedCard.classList.contains('card') && openCards.length <2) {
@@ -48,6 +57,7 @@ deck.addEventListener('click', (event) => {
             checkMatch();
         }
     }
+    //countMoves();
 });
 
 // Toggle function to reveal card's symbol
@@ -68,7 +78,7 @@ function checkMatch() {
     if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
         openCards[0].classList.toggle('match');
         openCards[1].classList.toggle('match');
-        openCards = []; // clears open card array
+        openCards = []; // clears open card array for next moves
     } else {
         setTimeout (() => { // set timeout so we can see open cards before they flip back
             flipCard(openCards[0]); // flips cards back
@@ -77,3 +87,10 @@ function checkMatch() {
         }, 2000);
     }   
 }
+
+// Function to increment move counter
+// let moves = 0;
+
+// function countMoves() {
+//     $('.moves').text();
+// }
