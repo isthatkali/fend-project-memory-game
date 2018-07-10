@@ -55,12 +55,12 @@ deck.addEventListener('click', (event) => {
         addCard(clickedCard);
         if (openCards.length === 2) {
             checkMatch();
+            addMove();
         }
     }
-    //countMoves();
 });
 
-// Toggle function to reveal card's symbol
+// Toggle function to reveal card's symbol or flip back over
 function flipCard(clickedCard) {
     clickedCard.classList.toggle('open');
     clickedCard.classList.toggle('show');
@@ -75,8 +75,8 @@ function addCard (clickedCard) {
 
 // Function to check if opened cards are matching 
 function checkMatch() {
-    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
-        openCards[0].classList.toggle('match');
+    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) { // check if card class matches
+        openCards[0].classList.toggle('match'); // add match class to matching cards
         openCards[1].classList.toggle('match');
         openCards = []; // clears open card array for next moves
     } else {
@@ -89,8 +89,11 @@ function checkMatch() {
 }
 
 // Function to increment move counter
-// let moves = 0;
+let moves = 0;
 
-// function countMoves() {
-//     $('.moves').text();
-// }
+function addMove() {
+    moves++;
+    document.querySelector('.moves').innerHTML = moves; // update span text of moves class
+}
+
+// Function for star rating
