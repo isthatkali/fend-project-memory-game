@@ -3,6 +3,9 @@
  */
 const deck = document.querySelector('.deck');
 
+// Refresh game counter before game starts
+document.querySelector('.moves').innerHTML = 0;
+
  /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -56,6 +59,7 @@ deck.addEventListener('click', (event) => {
         if (openCards.length === 2) {
             checkMatch();
             addMove();
+            checkRating();
         }
     }
 });
@@ -84,7 +88,7 @@ function checkMatch() {
             flipCard(openCards[0]); // flips cards back
             flipCard(openCards[1]);
             openCards = []; // clears open card array
-        }, 2000);
+        }, 1500);
     }   
 }
 
@@ -97,3 +101,9 @@ function addMove() {
 }
 
 // Function for star rating
+function checkRating() {
+    if (moves === 14 || moves === 20) {
+        // remove star
+        document.querySelector('.fa-star').remove();
+    }
+}
