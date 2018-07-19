@@ -3,8 +3,13 @@
  */
 const deck = document.querySelector('.deck');
 
-// Refresh game counter before game starts
-document.querySelector('.moves').innerHTML = 0;
+// Refresh game
+function refresh() {
+    document.querySelector('.moves').innerHTML = 0;
+    // document.getElementsByClassName('.card').removeClass('.match');
+}
+
+refresh();
 
  /*
  * Display the cards on the page
@@ -51,6 +56,8 @@ function shuffle(array) {
  */
 
 // Set up event listener for when a card is clicked
+let timerOn = false; 
+
 deck.addEventListener('click', (event) => {
     const clickedCard = event.target;
     if (clickedCard.classList.contains('card') && openCards.length <2) {
@@ -68,6 +75,10 @@ deck.addEventListener('click', (event) => {
 function flipCard(clickedCard) {
     clickedCard.classList.toggle('open');
     clickedCard.classList.toggle('show');
+    if (timerOn === false) {
+        startTimer();
+        timerOn = true;
+    }
 }
 
 // Function to add clicked card to list of "open" cards
@@ -88,7 +99,7 @@ function checkMatch() {
             flipCard(openCards[0]); // flips cards back
             flipCard(openCards[1]);
             openCards = []; // clears open card array
-        }, 1500);
+        }, 1200);
     }   
 }
 
@@ -107,3 +118,39 @@ function checkRating() {
         document.querySelector('.fa-star').remove();
     }
 }
+
+// Function to start and display timer: startTimer(); displayTimer();
+let time = 0;
+let timeDisplay;
+
+function startTimer() {
+    timeDisplay = setInterval(() => {
+        time++;
+        displayTimer();
+    }, 1000);
+}
+
+function displayTimer() {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+
+    if (seconds < 10) {
+        document.querySelector('.seconds').innerHTML = "0" + seconds;
+    } else {
+        document.querySelector('.seconds').innerHTML = seconds;         
+    }
+    if (minutes < 10 ) {
+        document.querySelector('.minutes').innerHTML = "0" + minutes;
+    } else {
+        document.querySelector('.minutes').innerHTML = minutes;
+    }
+}
+
+// Function for stop timer: stopTimer(); @end of game
+function stopTimer() {
+    clearInterval(timeDisplay);
+}
+
+// Event listener for "restart"
+
+// Add progress bar?
