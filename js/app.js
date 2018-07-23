@@ -3,14 +3,6 @@
  */
 const deck = document.querySelector('.deck');
 
-// Refresh game
-function refresh() {
-    document.querySelector('.moves').innerHTML = 0;
-    // document.getElementsByClassName('.card').removeClass('.match');
-}
-
-refresh();
-
  /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -88,12 +80,21 @@ function addCard (clickedCard) {
     openCards.push(clickedCard);
 }
 
-// Function to check if opened cards are matching 
+// Function to check if opened cards are matching
+let matchedSets = 0;
+const numPairs = 8;
+
 function checkMatch() {
     if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) { // check if card class matches
         openCards[0].classList.toggle('match'); // add match class to matching cards
         openCards[1].classList.toggle('match');
         openCards = []; // clears open card array for next moves
+        matchedSets++;
+        if (matchedSets === numPairs) {
+            stopTimer();
+            toggleModal();
+            presentStats();
+        }
     } else {
         setTimeout (() => { // set timeout so we can see open cards before they flip back
             flipCard(openCards[0]); // flips cards back
@@ -159,8 +160,7 @@ function toggleModal() {
 // Function to present stats on modal : endStars, endMoves, endTime
 function presentStats() {
     const starStat = document.querySelector('.endStars');
-    // const starCount = document.querySelectorAll('li.fa-stars'); // NodeList....
-    const starCount = document.querySelector('.stars').innerHTML; // Not sure how to get rid of bullet points and make stars horizonal
+    const starCount = document.querySelector('.score-panel .stars').innerHTML; // Need to make horizonal
     const moveStat = document.querySelector('.endMoves');
     const moveCount = document.querySelector('.moves').innerHTML;
     const timeStat = document.querySelector('.endTime');
@@ -173,11 +173,48 @@ function presentStats() {
 
 // Modal box event listeners:
 document.querySelector('.fa-check').addEventListener('click', () => {
-    // call function to restart
+    toggleModal();
+    resetGame();
 });
 
 document.querySelector('.fa-close').addEventListener('click', () => {
     toggleModal();
 });
+
+// Event listener for replay button on main game screen
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+// Function to start new game
+function resetGame() {
+    resetTime();
+    resetMoves();
+    resetStars();
+    resetCards();
+    // document.getElementsByClassName('.card').removeClass('.match');
+}
+
+function resetTime() {
+    stopTimer();
+    time = 0;
+    displayTimer();
+    timerOn = false;
+}
+
+function resetMoves() {
+    document.querySelector('.moves').innerHTML = 0;
+}
+
+function resetStars() {
+    const starHTML = `<li><i class="fa fa-star"></i></li> `;
+    document.querySelector('.stars').innerHTML = starHTML + starHTML + starHTML;
+}
+
+function resetCards() {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card'; // remove all "match", "open", "show" classes from cards in deck 
+    }
+    shuffleCards();
+}
 
 // Add progress bar?
