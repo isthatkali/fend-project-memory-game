@@ -2,30 +2,36 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Intro](#intro)
 * [Contributing](#contributing)
 * [Known Bugs](#knownbugs)
 * [Potential] (#potential)
+* [SpecialThanks] (#muchasgracias)
 
-## Instructions
+## Intro
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Hello, I began this project with the starter code provided by Udacity. The goal was to make the game function and interactive. Please enjoy.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Starter code was pulled from Udacity. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details
 
 ## Known Bugs
 
-- I was able to figure out how to remove the bullet points for the star stats on modal bux, but couldn't figure out how to format the stars to be displayed horizonally
+I was able to figure out how to remove the bullet points for the star stats on modal bux, but couldn't figure out how to format the stars to be displayed horizonally
 
 ## Potential
 
-- Add more animations
+- Add animations
 - Add a progress bar
+- Use cute animal gifs for card images instead of icons
+- Add background music
+
+## Special Thanks
+
+- to all the online resources available out there:
+    - MDN
+    - W3schools
+- to Udacity and Udacity Resources:
+    - https://www.diigo.com/outliner/fii42b/Udacity-Memory-Game-Project?key=dwj0y5x9cw
+    - Slack channels

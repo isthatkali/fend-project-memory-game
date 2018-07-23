@@ -90,7 +90,7 @@ function checkMatch() {
         openCards[1].classList.toggle('match');
         openCards = []; // clears open card array for next moves
         matchedSets++;
-        if (matchedSets === numPairs) {
+        if (matchedSets === numPairs) { // check for when game is over
             stopTimer();
             toggleModal();
             presentStats();
@@ -190,7 +190,6 @@ function resetGame() {
     resetMoves();
     resetStars();
     resetCards();
-    // document.getElementsByClassName('.card').removeClass('.match');
 }
 
 function resetTime() {
