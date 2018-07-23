@@ -4,6 +4,8 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Known Bugs](#knownbugs)
+* [Potential] (#potential)
 
 ## Instructions
 
@@ -18,3 +20,12 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Known Bugs
+
+- I was able to figure out how to remove the bullet points for the star stats on modal bux, but couldn't figure out how to format the stars to be displayed horizonally
+
+## Potential
+
+- Add more animations
+- Add a progress bar
