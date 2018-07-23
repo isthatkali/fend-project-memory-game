@@ -34,4 +34,6 @@ I was able to figure out how to remove the bullet points for the star stats on m
     - W3schools
 - to Udacity and Udacity Resources:
     - https://www.diigo.com/outliner/fii42b/Udacity-Memory-Game-Project?key=dwj0y5x9cw
+        - Webinars
+        - Matthew Cranford Memory Game Walkthrough
     - Slack channels
