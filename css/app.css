@@ -98,12 +98,18 @@ h1 {
     margin: 0 5px 0 0;
 }
 
+ul .stars {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
 
-/* added styling for timer */
+/* styling for timer */
 .score-panel .timer {
     margin-left: 70px;
     padding: 0;
@@ -113,4 +119,65 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+/* styling for modal box*/
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 31, 31, 0.336);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .hide {
+    display: none;
+} */
+
+.modalHeader {
+    font-size: 33px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: rgb(9, 141, 9);
+    color: white;
+}
+
+.modalBody {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.congrats {
+    font-weight: bold;
+}
+
+.prompt {
+    font-weight: bold;
+    font-size:25px;
+}
+
+.buttons {
+    display: flex;
+    font-size: 33px;
+    background-color: white;
 }

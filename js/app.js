@@ -75,7 +75,7 @@ deck.addEventListener('click', (event) => {
 function flipCard(clickedCard) {
     clickedCard.classList.toggle('open');
     clickedCard.classList.toggle('show');
-    if (timerOn === false) {
+    if (timerOn === false) { // start timer on first move
         startTimer();
         timerOn = true;
     }
@@ -120,7 +120,7 @@ function checkRating() {
 }
 
 // Function to start and display timer: startTimer(); displayTimer();
-let time = 0;
+let time = 0; // stores time in seconds
 let timeDisplay;
 
 function startTimer() {
@@ -151,6 +151,33 @@ function stopTimer() {
     clearInterval(timeDisplay);
 }
 
-// Event listener for "restart"
+// Function to activate modal box
+function toggleModal() {
+    document.querySelector('.modal').classList.toggle('hide');
+}
+
+// Function to present stats on modal : endStars, endMoves, endTime
+function presentStats() {
+    const starStat = document.querySelector('.endStars');
+    // const starCount = document.querySelectorAll('li.fa-stars'); // NodeList....
+    const starCount = document.querySelector('.stars').innerHTML; // Not sure how to get rid of bullet points and make stars horizonal
+    const moveStat = document.querySelector('.endMoves');
+    const moveCount = document.querySelector('.moves').innerHTML;
+    const timeStat = document.querySelector('.endTime');
+    const timerTime = document.querySelector('.timer').innerHTML;
+
+    starStat.innerHTML = `Stars:  ${starCount}`;
+    moveStat.innerHTML = `Moves:  ${moveCount}`;
+    timeStat.innerHTML = `Finish Time:  ${timerTime}`;
+}
+
+// Modal box event listeners:
+document.querySelector('.fa-check').addEventListener('click', () => {
+    // call function to restart
+});
+
+document.querySelector('.fa-close').addEventListener('click', () => {
+    toggleModal();
+});
 
 // Add progress bar?
