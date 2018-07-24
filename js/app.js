@@ -52,7 +52,7 @@ let timerOn = false;
 
 deck.addEventListener('click', (event) => {
     const clickedCard = event.target;
-    if (clickedCard.classList.contains('card') && openCards.length <2) {
+    if (clickedCard.classList.contains('card') && openCards.length <2 && !clickedCard.classList.contains('open')) {
         flipCard(clickedCard);
         addCard(clickedCard);
         if (openCards.length === 2) {
@@ -209,11 +209,11 @@ function resetStars() {
 }
 
 function resetCards() {
+    openCards = [];
+    matchedSets = 0;
     const cards = document.querySelectorAll('.deck li');
     for (let card of cards) {
         card.className = 'card'; // remove all "match", "open", "show" classes from cards in deck 
     }
     shuffleCards();
 }
-
-// Add progress bar?
